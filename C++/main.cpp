@@ -1,6 +1,3 @@
-# NavMesh
-
-```cpp
 #include <SFML/Graphics.hpp>
 #include "Mesh.h"  
 
@@ -70,4 +67,3 @@ int main()
     
     return 0;
 }
-```
