@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<script src="level.js"></script> 
+
+		<script src="PathPlanner.js"></script> 
+
+		<script>
+
+			var a;
+			var b;
+
+			var pathPlanner = new PathPlanner();
+
+			document.onmousedown = function(e)
+			{
+				a = {'x':e.pageX-10, 'y':e.pageY-10};
+			}
+
+			document.onmouseup = function(e)
+			{
+				b = {'x':e.pageX-10, 'y':e.pageY-10};				
+				var pts = pathPlanner.search(a, b);
+				var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+				ctx.beginPath();
+				for (var i=1; i<pts.length; i++)
+					ctx.moveTo(pts[i].x, pts[i].y),
+					ctx.lineTo(pts[i-1].x, pts[i-1].y);
+				ctx.strokeStyle = '#0000ff'; 
+				ctx.stroke();	
+			}
+
+		</script>
+
+	</head>
+	      	
+	<body>
+
+		<canvas id="myCanvas" width="800" height="600" style="border:1px solid #ff0000">
+
+		<script> pathPlanner.drawMesh(); </script>
+
+	</body>
+
+</html>
